@@ -1,0 +1,161 @@
+﻿@model List<DomainProduct.Entities.Category>
+
+<div id="menu" class="ui container fluid menuheader" style="">
+  <div class="overlapblackbg"></div>
+  <div class="ui container">
+    <div class="wsmobileheader clearfix">
+
+      <a id="wsnavtoggle" class="animated-arrow"><span></span></a>
+
+      <a href="/Home" title="Página Inicial">
+        <img id="logo" src="/assets/image/logo/logo.png" alt="@LojaCorp.Control.Company._Company.FantasyName" title="@LojaCorp.Control.Company._Company.FantasyName">
+      </a>
+
+      <div class="ui searchMobile mobile only"style="color:white; display: contents !important;">
+        <div class="ui button icon centered"style="color:#fff; padding: 0px; vertical-align: top; margin-top: 15px;">
+          <i class="search large icon"></i>
+        </div>
+        <div class="ui blocoBusca _classSearch">
+          <div class="ui input fluid blocoBuscaContainer">
+            <input class="prompt" type="text" placeholder="Buscar...">
+            <i class="search icon search-results"></i>
+            <i class="close icon disabled" id="closeResultsMobile"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div> 
+
+      <div id="cartButton" class="ui labeled button cartbutton no margin bottom mini-cart" tabindex="0" data-segment="b2c">
+        <div>
+          <i class="cart icon iconesh"></i>
+          <a class="ui circular label" id="total_itens_card1">
+            @{
+              if (Session["EventList"] == null)
+              {
+                    @Html.Action("TotalItensCart", "Checkout")
+              }
+              else
+              {
+                @Html.Action("TotalItensList", "EventList")
+              }
+            }
+          </a>
+        </div>
+      </div>
+          
+    </div>
+    <div class="wsmain">
+      <nav class="wsmenu">
+        <div class="ui mobile only titleMenu"><i class="content icon" style="color: white !important;transform: translate(0px, -35px);"></i>
+        
+          <a href="/Home" title="Página Inicial">
+          <img id="logo" src="/assets/image/logo/logo.png" style="margin-left: 36%;height:50px" alt="@LojaCorp.Control.Company._Company.FantasyName" title="@LojaCorp.Control.Company._Company.FantasyName">
+          </a>
+
+          <span style="display:block;text-align: center;padding: 6px 0;font-weight: 100;color: white;">Bem vindo!</span>
+
+          @if ((Session["UserAuthenticated"] == null || (Convert.ToBoolean(Session["Guest"]) == true)) && Session["Seller"] == null)
+          {
+            <div class="item" style="text-align: center;">  
+              <a class="login" style="color:white;"href="/customer" title="Área do Cliente">   
+                Entrar             
+              </a>
+            </div>
+          }
+          @if ((Session["UserAuthenticated"] != null) && (Convert.ToBoolean(Session["Guest"]) == false))
+          {
+
+            <div class="item" style="display: block;text-align: center;">
+              <a href="/customer" style="color:#FFF;" title="Área do Cliente">
+                <span  class="text"> minha conta</span>
+              </a>
+              <a href="/checkout" style="color:#000;margin-left:5px;"  title="Sacola">
+                <span href="/checkout" class="text" >minha sacola</span>
+              </a>
+            </div>  
+                            
+          }
+
+
+        </div>
+
+        <ul class="mobile-sub wsmenu-list ui menu">
+          @foreach (DomainProduct.Entities.Category category in Model)
+          {
+            if (category.Level.Length == 2)
+            {
+              <li>
+                <a href="@category.UrlFriendly" class="item" title="@category.Name">
+                  @category.Name
+                  @if (category.ChildCategories != null && category.ChildCategories.Any())
+                  {
+                    <i class="dropdown icon"></i>
+                  }
+                </a>
+                @if (category.ChildCategories != null && category.ChildCategories.Any())
+                {
+                  <div class="megamenu clearfix">
+                    <div class="ui grid">
+                      <div class="row">
+                        <div class="@(category.Image == null ? "sixteen wide computer column" : "fifteen wide mobile twelve wide tablet twelve wide computer column")">
+                          <div class="ui grid three column">
+                            @if (category.ChildCategories != null && category.ChildCategories.Any())
+                            {
+                              foreach (DomainProduct.Entities.Category subCategoryLevel1 in category.ChildCategories)
+                              {
+                                <div class="sixteen wide mobile eight wide tablet four wide computer column">
+                                  <div class="ui list relaxed">
+                                    <a href="@subCategoryLevel1.UrlFriendly" title="@subCategoryLevel1.Name">@subCategoryLevel1.Name</a>
+                                    @if (subCategoryLevel1.ChildCategories != null && subCategoryLevel1.ChildCategories.Any())
+                                    {
+                                      <div class="ui divider"></div>
+                                      foreach (var subCategoryLevel2 in subCategoryLevel1.ChildCategories)
+                                      {
+                                        <a class="item" href="@subCategoryLevel2.UrlFriendly" title="@subCategoryLevel2.Name">@subCategoryLevel2.Name</a>
+                                      }
+                                    }
+                                  </div>
+                                </div>
+                              }
+                            }
+                          </div>
+                        </div>
+                        @if (category.Image != null)
+                        {
+                          <div class="four wide tablet four wide computer column mobile-hide">
+                            @{
+                              string linkCategoriaImagem = null;
+                              if (category.Link != null)
+                              {
+                                linkCategoriaImagem = category.Link.Contains("http") || category.Link.Contains("https") ?  category.Link : "http://" + category.Link;
+                              }
+                              else
+                              {
+                                linkCategoriaImagem = @category.UrlFriendly;
+                              }
+                            }
+                            <a href="@linkCategoriaImagem" alt="@category.Image" title="@category.Name">
+                              <img class="ui image" src="@category.Image" alt="@category.Name" title="@category.Name" />
+                            </a>
+                          </div>
+                        }
+
+                      </div>
+                    </div>
+                  </div>
+                }
+              </li>
+            }
+            else
+            {
+              <li>
+                <a class="item" href="~/category/index/@category.IdCategory" title="@category.Name"><span>@category.Name</span></a>
+              </li>
+            }
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+<a href="https://wa.me/5511999602377" class="btn_whats" target="_blank"><i class="whatsapp icon"></i></a>

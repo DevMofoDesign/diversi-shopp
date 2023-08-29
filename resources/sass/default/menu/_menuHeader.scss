@@ -1,0 +1,235 @@
+$menuBG: $primary-color;
+$menuTextColor: $white;
+$menuHeight: 50px;
+$menuHoverBorderColor: $secondary-color;
+$colorLinkSubMenu: "#666";
+
+.menuheader {
+  background-color: $menuBG;
+  min-height: $menuHeight;
+  min-width: 100%;
+  /*Sub Classes*/
+  .ui.menu {
+    background: transparent;
+    background-color: transparent;
+    border: 0px;
+    box-shadow: none;
+    display: flex;
+    font-weight: 400;
+    min-height: 2.85714286em;
+    flex-wrap: wrap;
+    margin:auto;
+    align-items: center;
+    justify-content: center;
+    li {
+      &:hover,
+      &.active,
+      &:focus {
+        box-shadow: inset 0 -5px 0 $menuHoverBorderColor;
+        }
+      > .item {
+        word-wrap: normal;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-transform: uppercase;
+          margin:0;
+          font-size: 14px;
+          line-height: $menuHeight; 
+            
+        
+        > .icon.dropdown {
+          line-height: 18px;
+          }
+        > .icon.content {
+          font-size: 26px;
+          line-height: 1;
+          margin-right: 15px;
+          }
+        .menu {
+          border-radius: 0px !important;
+          margin-top: 0px !important;
+          z-index: 10;
+          .item {
+            line-height: 18px;
+            &:hover,
+            &.active,
+            &:focus {
+              box-shadow: none !important;
+              }
+            }
+          .menu {
+            box-shadow: none;
+            }
+            
+          }
+        }
+      }
+      .header {
+        a {
+          color:$colorLinkSubMenu;
+          font-size:14px;
+          font-weight: 300;
+        }
+      }
+    }
+  .ui.menu .item {
+    color: $menuTextColor;
+    line-height: $menuHeight;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    }
+  .ui.menu .item:hover,
+  .ui.menu .item.active {
+    box-shadow: inset 0 -5px 0 $menuHoverBorderColor;
+    color: $menuTextColor;
+    }
+  .sub-megamenu {
+    .ui.link.list {
+      .item {
+        color: rgba(0, 0, 0, 0.7);
+        margin: 0.5em 0px;
+        padding-left: 10px;
+        }
+      }
+    }
+  .ui.menu > .item:first-child,
+  .ui.menu > .item:last-child {
+    border-radius: 0px;
+    }
+  .ui.list {
+    
+    h4 {
+      font-weight: normal;
+    }
+    .item {
+      color: rgba(0, 0, 0, .7);
+      padding-left: 10px !important;
+      &:hover,
+      &.active,
+      &:focus {
+        color: rgba(0, 0, 0, .9);
+        box-shadow: inset 5px 0 0 $menuHoverBorderColor;
+        transition: opacity 0.3s ease-in-out;
+        }
+      }
+    }
+    .searchMobile {
+      display: inline-block;
+  
+      @media screen and (min-width: 375px) {
+        float: right;
+      }
+  
+      margin-right: 1em;
+      padding-right: 1em;
+      border-right: 1px solid #eee;
+  
+      > .button {
+        background: transparent;
+        margin: 0;
+        @media screen and (max-width: 900px) {
+        margin-left: 10% !important;
+        }
+      }
+  
+      .blocoBusca {
+        display: none;
+        background: #fff;
+        border-radius: .5em;
+        border: 1px solid #DDD;
+  
+        &.active {
+          display: block !important;
+          position: fixed;
+          right: 10px;
+          top: 70px;
+          z-index: 10;
+          width: calc(100% - 20px);
+          height: 40px;
+        }
+  
+        &Container {
+          display: flex !important;
+          align-items: center;
+  
+          .prompt {
+            border: 0px !important;
+            max-width: calc(100% - 80px);
+          }
+  
+          .icon {
+            display: table;
+            padding: #{$p-icon-search-mobile / 2} $p-icon-search-mobile;
+            font-size: 1.5em;
+            margin-right: 0px !important;
+  
+            &:last-child {
+              border-left: 1px solid #DDD;
+            }
+  
+            &.disabled {
+              color: #999;
+            }
+          }
+        }
+      }
+    }
+    #logo{
+      @media screen and (max-width: 900px) {
+        margin-left: calc(50% - 21px);
+        height: 42px;
+        margin-top: 3px;
+       
+      }
+       
+    }
+  
+    #cartButton{
+      color: white ;
+      float: right;
+      margin-top: 18px;
+      i{
+        font-size: 1.5rem;
+      }
+      
+      #total_itens_card1{
+        @media screen and (max-width: 900px) {
+          top: 6px;
+          right: -3px;
+          position: absolute;
+          min-width: 18px !important;
+          min-height: 18px !important;
+          padding: 0 !important;
+          line-height: 16px !important;
+          font-size: 10px !important;
+          background: #fff !important;
+          border: 1px solid #2c3e50;
+        }
+      }
+    }
+  }
+/* Mega Menu Start */
+@import "wsmenu/style";
+/* MegaMenu End */
+.btn_whats{
+  background: #12c71b;
+  border-radius: 34px 8px 34px 34px;
+  position: fixed;
+  width: 47px;
+  height: 47px;
+  bottom: 3%;
+  right: 2%;
+  z-index: 999;
+  cursor: pointer;
+  box-shadow: 0 2px 3px 2px #0000006e;
+  &:hover {
+    background: #2d5f09;
+    transform: scale(1.1);
+  }
+  i{
+    color: #ffffff;
+    font-size: 35px!important;
+    transform: translate(5px, 14px);
+  }
+}

@@ -1,0 +1,40 @@
+.topsellers {
+	margin-top: 30px;
+  .slick-slider .slick-prev {
+    top: 40%;
+    left: 0%;
+    opacity: 1;
+    padding: 0px; 
+    box-shadow: none!important;
+    background: transparent!important;
+    border: 0px!important;
+    line-height: 2.5em;
+    height: 30px;
+    .icon{
+      font-size: xx-large;
+      color: $primary-color;
+    }
+  }
+  
+  .slick-slider .slick-next {
+    box-shadow: none!important;
+    border: 0px!important;
+    background: transparent!important;
+    top: 40%;
+    right: 0%;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    line-height: 2.5em;
+  
+    .icon{
+      font-size: xx-large;
+      color: $primary-color;
+    }
+  }
+}
+
+.ui.horizontal.divider:before, .ui.horizontal.divider:after{
+  top: calc(50% - 12px);
+}

@@ -1,0 +1,43 @@
+.car-banners {	
+	.container {
+		position:relative;
+		.description {
+			width: 30%;
+			height: 100%;
+			top: 0;
+			bottom: 0;
+			position: absolute;
+			background: rgba(255,255,255,.5);
+			display: flex;
+
+			.html {
+				flex-direction: column;
+				vertical-align: middle;
+				align-self: center !important;
+				width:100%;
+				text-align: center;
+			}
+		}
+	}	
+}
+
+.ui.images {
+  img.side-halfbanner-image {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+.ui.container.centralHalf{
+	width: 100%;
+    padding: 6% 20%;
+    background: #FFF5EE;
+    -webkit-clip-path: polygon(0 0,100% 15%,480% 25%,0 100%);
+    clip-path: polygon(0 0,100% 15%,480% 25%,0 100%);
+	@media screen and (max-width: $mobile-bp){
+		clip-path: none;
+		background: none;
+		padding: 0;
+	}
+	
+}

@@ -1,0 +1,11 @@
+//Font
+$body-font-size: 14px;
+$import-google-fonts: false;
+$font-url: 'https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext';
+$font-name: 'Lato';
+$font-family: 'Century Gothic', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+@font-face {
+    font-family: 'Glacial';
+    src: url("/assets/fonts/GlacialIndifference-Regular.otf")
+}

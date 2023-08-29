@@ -1,0 +1,44 @@
+﻿@{
+    string _classSearch = Session["idEventList"] == null ? "search" : "filterListEventsProducts";
+    string _classMiniCart = Session["idEventList"] == null && Session["EventList"] == null ? "mini-cart" : "mini-cart-list-event";
+}
+<div class="ui container fluid _header">
+    <div class="ui container">
+        <div class="ui middle aligned four column centered grid">
+            <div class="row">
+                <div class="ui four wide computer only column">
+                    <a href="/home" title="Página Inicial">
+                        <img class="ui middle aligned image logo" src="/assets/image/logo/logo.png" alt="@LojaCorp.Control.Company._Company.FantasyName" title="@LojaCorp.Control.Company._Company.FantasyName">
+                    </a>
+                </div>
+                <div class="ui center aligned eight wide computer column only searchcolumn">
+                    <div class="ui category @_classSearch">
+                        <div class="ui icon input fluid">
+                            <input class="prompt" type="text" placeholder="Buscar...">
+                            <i class="search icon"></i>
+                        </div>
+                        <div class="results"></div>
+                    </div>
+                </div>
+                
+                <div class="ui right aligned three wide computer only column">
+                    <a  href="/customer/login" style="margin-right:2px">
+                        <i class="user icon iconesh"></i>
+                    </a>
+
+                    <a href="/customer/wishList" style="margin-right:2px">
+                        <i class="heart outline icon iconesh"></i>
+                    </a>
+                    <div id="cartButton" class="ui labeled button cartbutton no margin bottom @_classMiniCart" tabindex="0" data-segment="@(Session["segment"] != null ? Session["segment"] : "b2c")">
+                        <div>
+                            <i class="cart icon iconesh"></i>
+                            <a class="ui circular label" id="total_itens_card"></a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

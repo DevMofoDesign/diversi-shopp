@@ -1,0 +1,29 @@
+﻿@model List<DomainCheckout.Entities.PaymentBrand>
+
+<div class="ui tab segment" data-tab="boleto">  
+    
+    
+    @foreach (var item in Model)
+    {
+        <div class="blocoTypePayment" data-typePayment="@item.IdPaymentBrand">
+            <div class="titleTypePayment" style="display:none;" >
+                <div class="ui radio checkbox">
+                    <input type="radio" name="type-@(item.IdPaymentBrand)" tabindex="0" class="hidden">
+                    <label for="type-@(item.IdPaymentBrand)">@item.NamePayment</label>
+                </div>
+            </div>
+            <div class="contentPayment" style="display:block;" data-payment="@item.IdPaymentBrand">
+                <p class="transition hidden"></p>
+                <div class="field">
+                    <button class="ui labeled icon action large fluid button GerarPedido"   data-idBrand="@item.IdPaymentBrand" data-Card="N" data-externalcode="@item.ExternalCode">
+                        <i class="barcode icon"></i>
+                        Pagar com Boleto
+                        <input type="hidden" name="parcelamento" class="idInstallment" value="0"/>
+                        <input type="hidden" name="kind" value="boleto"/>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+    }
+</div>
