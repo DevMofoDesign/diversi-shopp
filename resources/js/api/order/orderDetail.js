@@ -6,7 +6,7 @@ function printDiv(divID) {
 
     document.body.innerHTML =
         "<html><head><title></title></head><body>" +
-        "<div class='ui eight wide tablet four wide computer column'><a href='/home'><img class='ui middle aligned image' src='/assets/image/logo/logo.png' alt='' onerror=\"imgError(this)\"></a></div></br>" +
+        "<div class='ui eight wide tablet four wide computer column'><a href='/home'><img class='ui middle aligned image' src='/assets/image/logo/logo.svg' alt='' onerror=\"imgError(this)\"></a></div></br>" +
         divElements + "</body>";
     window.print();
     document.body.innerHTML = oldPage;

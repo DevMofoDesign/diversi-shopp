@@ -274,3 +274,20 @@
         margin-right: 1em;
     }
 }
+
+.product-in-card {
+    .content {
+        .ui.image {
+            position: relative;
+            padding-top: 100%;
+            display: block;
+            width: 100%;
+            .content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                object-fit: contain;
+            }
+        }
+    }
+}
